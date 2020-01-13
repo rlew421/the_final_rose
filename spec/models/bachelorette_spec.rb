@@ -15,5 +15,15 @@ RSpec.describe Bachelorette, type: :model do
 
       expect(hannah.average_contestant_age).to eq(30.3)
     end
+
+    it "distinct_hometowns" do
+      hannah = Bachelorette.create!(name: "Hannah Brown", season_number: 15, season_description: "The most dramatic season yet!")
+
+      andrew = Contestant.create!(name: "Andrew Austen", age: 27, hometown: "Los Angeles", bachelorette: hannah)
+      michael = Contestant.create!(name: "Michael Scott", age: 29, hometown: "New York City", bachelorette: hannah)
+      dylan = Contestant.create!(name: "Dylan Gomez", age: 35, hometown: "Chicago", bachelorette: hannah)
+
+      expect(hannah.distinct_hometowns).to match_array(["Chicago", "Los Angeles", "New York City"])
+    end
   end
 end

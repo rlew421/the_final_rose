@@ -5,3 +5,9 @@
 <p><%= contestant.age %></p>
 <p><%= contestant.hometown %></p>
 <% end %>
+
+<section id= 'hometowns'>
+  <% @bachelorette.distinct_hometowns.each do |hometown| %>
+  <p><%= hometown %></p>
+  <% end %>
+</section>
