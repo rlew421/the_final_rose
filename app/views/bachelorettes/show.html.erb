@@ -1,0 +1,7 @@
+<h1><%= @bachelorette.name %>'s Profile</h1>
+
+<p>Name: <%= @bachelorette.name %></p>
+<p>Season Number: <%= @bachelorette.season_number %></p>
+<p>Season Description: <%= @bachelorette.season_description %></p>
+
+<p><%= link_to "View the contestants for season #{@bachelorette.season_number}", "/bachelorettes/#{@bachelorette.id}/contestants" %></p>
