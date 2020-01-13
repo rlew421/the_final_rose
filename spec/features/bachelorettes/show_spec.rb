@@ -41,14 +41,16 @@ RSpec.describe 'bachelorette show page' do
 
     expect(current_path).to eq("/contestants/#{andrew.id}")
   end
-end
 
-# User Story 2 of 6
-#
-# As a visitor,
-# When I visit a bachelorette's contestants index '/bachelorettes/:bachelorette_id/contestants',
-# I see the names of that bachelorette's contestants along with the following information:
-# -Age
-# -Hometown
-# (e.g. "Name: Pilot Pete, Age: 34, Hometown: Irving, TX")
-# And I can click on any contestants name (as a link) to go to that contestants show page "/contestants/:id"
+  it "I see the average age of all of that bachelorette's conestants" do
+    hannah = Bachelorette.create!(name: "Hannah Brown", season_number: 15, season_description: "The most dramatic season yet!")
+
+    andrew = Contestant.create!(name: "Andrew Austen", age: 27, hometown: "Los Angeles", bachelorette: hannah)
+    michael = Contestant.create!(name: "Michael Scott", age: 29, hometown: "New York City", bachelorette: hannah)
+    dylan = Contestant.create!(name: "Dylan Gomez", age: 35, hometown: "Chicago", bachelorette: hannah)
+
+    visit "/bachelorettes/#{hannah.id}"
+
+    expect(page).to have_content("Average contestant age: #{hannah.average_contestant_age}")
+  end
+end
