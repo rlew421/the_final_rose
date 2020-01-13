@@ -15,7 +15,7 @@ RSpec.describe 'bachelorette show page' do
     expect(page).to have_content("Season Description: #{hannah.season_description}")
   end
 
-  it "I see a link to that bachelorette's contestants" do
+  it "I can click a link to that bachelorette's contestants index page and see those contestants' info" do
     hannah = Bachelorette.create!(name: "Hannah Brown", season_number: 15, season_description: "The most dramatic season yet!")
     emily = Bachelorette.create!(name: "Emily Adams", season_number: 5, season_description: "The wildest season yet!")
 
@@ -36,5 +36,19 @@ RSpec.describe 'bachelorette show page' do
     expect(page).to have_content(michael.age)
     expect(page).to have_content(michael.hometown)
     expect(page).to_not have_content(ben.name)
+
+    click_link "#{andrew.name}"
+
+    expect(current_path).to eq("/contestants/#{andrew.id}")
   end
 end
+
+# User Story 2 of 6
+#
+# As a visitor,
+# When I visit a bachelorette's contestants index '/bachelorettes/:bachelorette_id/contestants',
+# I see the names of that bachelorette's contestants along with the following information:
+# -Age
+# -Hometown
+# (e.g. "Name: Pilot Pete, Age: 34, Hometown: Irving, TX")
+# And I can click on any contestants name (as a link) to go to that contestants show page "/contestants/:id"
