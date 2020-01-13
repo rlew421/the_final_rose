@@ -6,9 +6,9 @@ RSpec.describe 'contestant show page' do
 
     andrew = Contestant.create!(name: "Andrew Austen", age: 27, hometown: "Los Angeles", bachelorette: hannah)
 
-    outing_1 = andrew.outings.create!(name: "Kickball")
-    outing_2 = andrew.outings.create!(name: "Hot Springs")
-    outing_3 = andrew.outings.create!(name: "Helicopter Ride")
+    outing_1 = andrew.outings.create!(name: "Kickball", location: "Hawaii", date: Time.now)
+    outing_2 = andrew.outings.create!(name: "Hot Springs", location: "Japan", date: Time.now)
+    outing_3 = andrew.outings.create!(name: "Helicopter Ride", location: "Bali", date: Time.now)
 
     visit "/contestants/#{andrew.id}"
 
