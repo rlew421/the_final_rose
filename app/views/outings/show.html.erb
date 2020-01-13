@@ -1,0 +1,11 @@
+<h1><%= @outing.name %> Outing</h1>
+
+<p>Location: <%= @outing.location %> </p>
+<p>Location: <%= @outing.date %> </p>
+<p>Number of Contestants: <%= @outing.contestants.length %></p>
+
+<section id= 'contestants'>
+  <% @outing.contestants.each do |contestant| %>
+  <p><%= contestant.name %></p>
+  <% end %>
+</section>
